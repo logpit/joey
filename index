@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e0, #ffeef3);
+      font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+
+    button {
+      padding: 16px 26px;
+      font-size: 20px;
+      border: none;
+      border-radius: 30px;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      position: absolute;
+      background: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <h1>Joey, Would you be my Valentine? ❤️</h1>
+    <button id="yesBtn">Yes 💘</button>
+    <button id="noBtn">No 🙃</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    let attempts = 0;
+
+    noBtn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      attempts++;
+
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+
+      const scale = Math.max(0.4, 1 - attempts * 0.1);
+      noBtn.style.transform = `scale(${scale})`;
+
+      if (attempts === 3) noBtn.textContent = "Really? 😳";
+      if (attempts === 5) noBtn.textContent = "Last chance 😭";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          background:#ffeff4;
+          text-align:center;">
+          <h1>YAAAY 🥰🥳�I love you ❤️</h1>
+          <p style="font-size:22px;">I knew you'd say yes 😌
+          </p>
+          <p style="font-size:18px;">Logan</p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
